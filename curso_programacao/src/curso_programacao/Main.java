@@ -4,25 +4,26 @@ import java.util.Scanner;
 
 public class Main {
 	
-	public static void main (String[]args) {
+	public static void main (String[] args) {
 		
-		System.out.println("Insira um número: ");
+		System.out.println("Insira a senha: ");
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int num = sc.nextInt();
+		int passw = sc.nextInt();
 		
-		int numDois = sc.nextInt();
+		do {
+			
+			System.out.println("Senha incorreta. Tente novamente.");
+			
+			passw = sc.nextInt();
+			
+		}
+		while (passw != 2002);
 		
-		if (num % numDois == 0 || numDois % num == 0) {
-			
-			System.out.println("Multiplos");
-		}
-		else {
-			
-			System.out.println("Não multiplos");
-		}
+		System.out.println("Acesso permitido.");
 		
 		sc.close();
+		
 	}
 }
