@@ -1,46 +1,45 @@
 package curso_programacao;
+
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 	
 	public static void main (String[] args) {
 		
-		System.out.print("Adivinhe o número (você tem 10 tentativas): ");
-		
+		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		int num;
 		
-		int numDeTenta = 10;
+		double xA, xB, xC, yA, yB, yC;
 		
-		for (int i = 1; i <= numDeTenta; i++) {
+		System.out.println("Medidas de X: ");
+		
+		xA = sc.nextDouble();
+		xB = sc.nextDouble();
+		xC = sc.nextDouble();
+		
+		System.out.println("Medidas de Y: ");
+		
+		yA = sc.nextDouble();
+		yB = sc.nextDouble();
+		yC = sc.nextDouble();
+		
+		double p = (xA + xB + xC)/2;
+		double areaX = Math.sqrt(p * (p - xA) * (p - xB) * (p - xC));
+		
+		p = (yA + yB + yC)/2;
+		double areaY = Math.sqrt(p * (p - yA) * (p - yB) * (p - yC));
+		
+		System.out.printf("Area do triângulo: %.4f%n", areaX);
+		System.out.printf("Area do triângulo: %.4f%n", areaY);
+		
+		if (areaX > areaY) {
 			
-			num = sc.nextInt();
+			System.out.println("Larger area: X");
+		} else {
 			
-			if (num == 12) {
-				
-				if (i == 1) {
-					
-					 System.out.println("Parabééénss!! Você conseguiu de primeira!.");
-				}
-				else if (i == 2) {
-					
-					System.out.println("De segunda :) uhuull!");
-				}
-				else {
-					
-					System.out.println("Demorou pra acertar, né? Slk");
-				}
-				return;
-			}
-			else {
-				
-				if (i < numDeTenta) {
-					
-					System.out.println("Tente de novo. (tentativa restantes: " + (numDeTenta - i) + ")");
-				}
-			}
+			System.out.println("Larger area: Y");
 		}
 		
-		System.out.print("É... você não conseguiu.");
 	}
 }
