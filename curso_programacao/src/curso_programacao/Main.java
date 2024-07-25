@@ -1,29 +1,46 @@
 package curso_programacao;
-
 import java.util.Scanner;
 
 public class Main {
 	
 	public static void main (String[] args) {
 		
-		System.out.println("Insira a senha: ");
+		System.out.print("Adivinhe o número (você tem 10 tentativas): ");
 		
 		Scanner sc = new Scanner(System.in);
+		int num;
 		
-		int passw = sc.nextInt();
+		int numDeTenta = 10;
 		
-		do {
+		for (int i = 1; i <= numDeTenta; i++) {
 			
-			System.out.println("Senha incorreta. Tente novamente.");
+			num = sc.nextInt();
 			
-			passw = sc.nextInt();
-			
+			if (num == 12) {
+				
+				if (i == 1) {
+					
+					 System.out.println("Parabééénss!! Você conseguiu de primeira!.");
+				}
+				else if (i == 2) {
+					
+					System.out.println("De segunda :) uhuull!");
+				}
+				else {
+					
+					System.out.println("Demorou pra acertar, né? Slk");
+				}
+				return;
+			}
+			else {
+				
+				if (i < numDeTenta) {
+					
+					System.out.println("Tente de novo. (tentativa restantes: " + (numDeTenta - i) + ")");
+				}
+			}
 		}
-		while (passw != 2002);
 		
-		System.out.println("Acesso permitido.");
-		
-		sc.close();
-		
+		System.out.print("É... você não conseguiu.");
 	}
 }
