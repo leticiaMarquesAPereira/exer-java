@@ -1,7 +1,7 @@
 package application;
 import java.util.Scanner;
 import java.util.Locale;
-import entities.Product;
+import entities.Student;
 
 public class Program {
 	
@@ -9,20 +9,16 @@ public class Program {
 		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		Product funcio = new Product();
+		Student student = new Student();
 		
-		System.out.println("Insira seu nome: ");
-		funcio.name = sc.next();
+		System.out.print("Nota 1: ");
+		student.nota1 = sc.nextDouble();
+		System.out.print("Nota 2: ");
+		student.nota2 = sc.nextDouble();
+		System.out.print("Nota 3: ");
+		student.nota3 = sc.nextDouble();
 		
-		System.out.println("Insira seu salário bruto: ");
-		funcio.salarioBruto = sc.nextDouble();
-		
-		System.out.println("Insira seu imposto: ");
-		funcio.imposto = sc.nextDouble();
-		
-		System.out.println("Quantos porcentos a adicionar ao salário? ");
-		funcio.increSalaria(sc.nextDouble());
-		
-		System.out.println("Dados atualizados - " + funcio.name + ", " + funcio.salarioLiquido());
+		System.out.println(student.resultadoFinal());
+		sc.close();
 	}
 }
