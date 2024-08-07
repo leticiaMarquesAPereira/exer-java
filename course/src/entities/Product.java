@@ -3,26 +3,16 @@ package entities;
 public class Product {
 	
 	public String name;
-	public double price;
-	public int quantity;
+	public double salarioBruto;
+	public double imposto;
 	
-	public double totalValueInStock() {
+	public void increSalaria(double porcentagem) {
 		
-		return price * quantity;
+		salarioBruto += (salarioBruto * porcentagem)/100;
 	}
-	public void addProduct(int quantity) {
+	public double salarioLiquido() {
 		
-		this.quantity += quantity;
-	}
-	public void removeProduct(int quantity) {
-		
-		this.quantity -= quantity;
-	}
-	public String toString() {
-		
-		return name 
-		+ ", R$" + String.format("%.2f", price) + ", " 
-		+ quantity + " unidades. Total: R$" 
-		+ String.format("%.2f", totalValueInStock());
+		return salarioBruto -= 1000;
 	}
 }
+
