@@ -1,7 +1,7 @@
 package application;
-import java.util.Scanner;
 import java.util.Locale;
-import entities.Student;
+import java.util.Scanner;
+import entities.CurrencyConverter;
 
 public class Program {
 	
@@ -9,16 +9,16 @@ public class Program {
 		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		Student student = new Student();
+	
+		System.out.print("Digite o preço atual do dolar: ");
+		double dollarV = sc.nextDouble();
 		
-		System.out.print("Nota 1: ");
-		student.nota1 = sc.nextDouble();
-		System.out.print("Nota 2: ");
-		student.nota2 = sc.nextDouble();
-		System.out.print("Nota 3: ");
-		student.nota3 = sc.nextDouble();
+		System.out.print("Quantos dólares serão comprados?: ");
+		double dollarQ = sc.nextDouble();
 		
-		System.out.println(student.resultadoFinal());
+		double totalAPagar = CurrencyConverter.totalAPagar(dollarV, dollarQ);
+		System.out.printf("Total a ser pago em reais (taxa IOF inclusa): %.2f", CurrencyConverter.totalAPagar(dollarV, dollarQ));
+		
 		sc.close();
 	}
 }
