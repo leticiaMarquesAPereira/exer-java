@@ -1,24 +1,81 @@
 package application;
+
 import java.util.Locale;
 import java.util.Scanner;
-import entities.CurrencyConverter;
+import entities.Product;
 
 public class Program {
-	
+
 	public static void main(String[] args) {
-		
+
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-	
-		System.out.print("Digite o preço atual do dolar: ");
-		double dollarV = sc.nextDouble();
+
+		System.out.println("Insira as seguintes informações do produto: ");
+		System.out.print("Nome - ");
+		String name = sc.next();
+
+		System.out.print("Preço - ");
+		double price = sc.nextDouble();
+
+		System.out.print("Quantidade - ");
+		int quantity = sc.nextInt();
 		
-		System.out.print("Quantos dólares serão comprados?: ");
-		double dollarQ = sc.nextDouble();
+		Product product = new Product(name, price, quantity);
 		
-		double totalAPagar = CurrencyConverter.totalAPagar(dollarV, dollarQ);
-		System.out.printf("Total a ser pago em reais (taxa IOF inclusa): %.2f", CurrencyConverter.totalAPagar(dollarV, dollarQ));
-		
+		System.out.println();
+		System.out.println("Dados do produto: " + product);
+		System.out.println();
+		System.out.print("Você deseja realizar mais alguma atividade no sistema? (s/n)");
+		String answer = sc.next();
+		System.out.println();
+
+		while (!(answer.equalsIgnoreCase("s") || (answer.equalsIgnoreCase("n")))) {
+
+			System.out.print("Opção incorreta, digite 's' ou 'n': ");
+			answer = sc.next();
+		}
+
+		if (answer.equalsIgnoreCase("n")) {
+
+			System.out.print("Fim do programa. ");
+		} else {
+
+			System.out.print(
+					"Qual das opções deseja realizar: Adicionar produto (a), Remover produto (b) ou Fechar programa (z)?");
+			answer = sc.next();
+			System.out.println();
+
+			while (!(answer.equalsIgnoreCase("a") || (answer.equalsIgnoreCase("b"))
+					|| (answer.equalsIgnoreCase("z")))) {
+
+				System.out.print("Opção incorreta, digite 'a', 'b' ou 'z': ");
+				answer = sc.next();
+				System.out.println();
+			}
+
+			if (answer.equalsIgnoreCase("a")) {
+
+				System.out.print("Entre com a quantidade de produtos para estocar: ");
+				quantity = sc.nextInt();
+				product.addProduct(quantity);
+
+				System.out.println();
+				System.out.println("Dados atualizados: " + product);
+			} else if (answer.equalsIgnoreCase("b")) {
+
+				System.out.print("Entre com a quantidade de produtos para tirar do estoque: ");
+				quantity = sc.nextInt();
+				product.removeProduct(quantity);
+
+				System.out.println();
+				System.out.println("Dados atualizados: " + product);
+			} else {
+
+				System.out.print("Fim do programa. ");
+			}
+		}
+
 		sc.close();
 	}
 }
