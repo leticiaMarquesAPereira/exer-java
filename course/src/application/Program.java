@@ -2,6 +2,7 @@ package application;
 
 import java.util.Locale;
 import java.util.Scanner;
+
 import entities.Product;
 
 public class Program {
@@ -22,6 +23,7 @@ public class Program {
 		int quantity = sc.nextInt();
 		
 		Product product = new Product(name, price, quantity);
+		System.out.println(product.getName());
 		
 		System.out.println();
 		System.out.println("Dados do produto: " + product);
